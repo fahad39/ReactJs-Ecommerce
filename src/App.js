@@ -5,9 +5,11 @@ import { commerce } from "./lib/commerce";
 
 function App() {
   const [product, setProduct] = useState([]);
+  const [cart, setCart] = useState({});
 
   useEffect(() => {
     fetchProducts();
+    fetchCart();
   }, []);
 
   const fetchProducts = async () => {
@@ -16,12 +18,19 @@ function App() {
     setProduct(data);
   };
 
-  console.log(product);
+  const handleAddToCart = async (productId, quantity) => {
+    const response = await commerce.cart.add(productId, quantity);
+    setCart(response.cart);
+  };
+
+  const fetchCart = async () => {
+    setCart(await commerce.cart.retrieve());
+  };
 
   return (
     <div>
-      <NavBar />
-      <Products products={product} />
+      <NavBar totalItems={cart.total_items} />
+      <Products products={product} onAddToCart={handleAddToCart} />
     </div>
   );
 }
