@@ -12,8 +12,7 @@ import useStyles from "./styles";
 
 function Product({ product, onAddToCart }) {
   const classes = useStyles();
-  console.log(product);
-  // return <div>test</div>;
+
   return (
     <Card className={classes.root}>
       <CardMedia
