@@ -56,6 +56,8 @@ function Cart({ cart, handleUpdateCart, handleRemoveCart, handleEmptyCart }) {
               type="button"
               variant="contained"
               color="primary"
+              component={Link}
+              to={ROUTES.CHECKOUT}
             >
               Checkout
             </Button>

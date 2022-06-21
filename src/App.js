@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { Products, NavBar, Cart } from "../src/components";
+import { Products, NavBar, Cart, Checkout } from "../src/components";
 import { commerce } from "./lib/commerce";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { ROUTES } from "./common/Routes";
 
 function App() {
@@ -65,6 +65,7 @@ function App() {
             />
           }
         />
+        <Route path={ROUTES.CHECKOUT} element={<Checkout />} />
       </Routes>
     </div>
   );
