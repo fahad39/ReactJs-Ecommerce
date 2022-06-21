@@ -5,7 +5,7 @@ import CartItem from "./cartItem/CartItem";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../common/Routes";
 
-function Cart({ cart }) {
+function Cart({ cart, handleUpdateCart, handleRemoveCart, handleEmptyCart }) {
   const classes = useStyles();
   const EmptyCart = () => {
     return (
@@ -26,7 +26,11 @@ function Cart({ cart }) {
           {cart.line_items.map((item) => {
             return (
               <Grid item xs={12} sm={4} key={item.id}>
-                <CartItem item={item} />
+                <CartItem
+                  item={item}
+                  onUpdateCart={handleUpdateCart}
+                  onRemoveCart={handleRemoveCart}
+                />
               </Grid>
             );
           })}
@@ -42,6 +46,7 @@ function Cart({ cart }) {
               type="button"
               variant="contained"
               color="secondary"
+              onClick={handleEmptyCart}
             >
               Empty Cart
             </Button>
