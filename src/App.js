@@ -65,7 +65,7 @@ function App() {
             />
           }
         />
-        <Route path={ROUTES.CHECKOUT} element={<Checkout />} />
+        <Route path={ROUTES.CHECKOUT} element={<Checkout cart={cart} />} />
       </Routes>
     </div>
   );
